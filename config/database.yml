@@ -10,13 +10,8 @@ default: &default
   timeout: 5000
 
 development:
-  adapter: mysql2
-  encoding: utf8
-  database: rails_tutorial
-  pool: 5
-  username: root
-  password:
-  host: localhost
+    <<: *default
+  database: mysql_rails_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
