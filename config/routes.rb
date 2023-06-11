@@ -3,8 +3,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get "time_logs" => "time_logs#index"
-  post "time_logs" => "time_logs#create"
-  delete "time_logs/:id" => "time_logs#destroy"
-  put "time_logs/:id" => "time_logs#update"
+  namespace 'api' do
+    namespace 'v1' do
+      resources :time_logs, only: %i(index)
+      namespace 'auth' do
+        post 'registrations' => 'registrations#create'
+      end
+    end
+  end
+
+  # get "time_logs" => "time_logs#index"
+  # post "time_logs" => "time_logs#create"
+  # delete "time_logs/:id" => "time_logs#destroy"
+  # put "time_logs/:id" => "time_logs#update"
 end
