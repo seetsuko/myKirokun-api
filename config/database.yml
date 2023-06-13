@@ -23,8 +23,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: sample_test
+  database: nonnda_app_test
 
 production:
   <<: *default
-  database: nonnda_app_production
