@@ -4,7 +4,7 @@ module Api
 
     # APIテストのため一旦コメントアウト
     
-    # include Firebase::Auth::Authenticable
-    # before_action :authenticate_user
+    include Firebase::Auth::Authenticable
+    before_action :authenticate_user
   end
 end
