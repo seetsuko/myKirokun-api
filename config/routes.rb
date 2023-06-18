@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :time_logs
       namespace 'auth' do
         post 'registrations' => 'registrations#create'
+        get 'registrations' => 'registrations#index'
       end
     end
   end
