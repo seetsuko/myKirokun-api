@@ -1,2 +1,0 @@
-class TimeLog < ApplicationRecord
-end

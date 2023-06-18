@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace 'api' do
     namespace 'v1' do
-      resources :time_logs
+      resources :do_logs
       namespace 'auth' do
         post 'registrations' => 'registrations#create'
         get 'registrations' => 'registrations#index'
