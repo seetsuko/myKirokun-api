@@ -3,8 +3,8 @@ module Api
     class DoListsController < Api::V1::ApplicationController
 
       def index
-        do_lists = DoList.all
-        render json: do_lists
+        @do_lists = DoList.all
+        render json: @do_lists
       end
 
       def create
@@ -18,13 +18,13 @@ module Api
       end
 
       def update
-        DoList.find(params[:id]).update(task_params)
-        head :updated
+        DoList.find(params[:id]).update(do_lists_params)
+        render json: @do_lists
       end
 
       private
       def do_lists_params
-        params.permit(:title, :id, :uid)
+        params.permit(:title)
       end
     end
   end
