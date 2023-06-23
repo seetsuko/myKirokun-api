@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-  include Identifiable
+  # アソシエーション
+  # has_many :do_lists
 end
