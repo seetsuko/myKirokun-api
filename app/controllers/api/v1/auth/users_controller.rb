@@ -2,7 +2,7 @@ require_dependency 'api/v1/application_controller'
 module Api
   module V1
     module Auth
-      class RegistrationsController < V1::ApplicationController
+      class UsersController < V1::ApplicationController
         skip_before_action :authenticate_user
         def index
           # ユーザー一覧を取り出す
@@ -27,7 +27,7 @@ module Api
         private
         
         def token
-          params[:token] || token_from_request_headers
+          params[:tokenData] || token_from_request_headers
         end
 
         def payload

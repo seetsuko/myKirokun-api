@@ -8,8 +8,8 @@ Rails.application.routes.draw do
       resources :do_logs
       resources :do_lists
       namespace 'auth' do
-        post 'registrations' => 'registrations#create'
-        get 'registrations' => 'registrations#index'
+        post 'users' => 'users#create'
+        get 'users' => 'users#index'
       end
     end
   end
