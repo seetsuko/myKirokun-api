@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_171123) do
     t.string "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "do_list_id"
   end
 
   create_table "users", primary_key: "uid", id: :string, default: "", force: :cascade do |t|

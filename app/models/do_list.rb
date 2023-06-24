@@ -2,6 +2,6 @@ class DoList < ApplicationRecord
   # ulidのinclude
   include Identifiable
   # リレーション
-  # belong_to :user
-  # has_many :do_logs
+  belongs_to :user
+  has_many :time_logs
 end
