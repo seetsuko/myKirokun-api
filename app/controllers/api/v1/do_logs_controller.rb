@@ -3,7 +3,7 @@ module Api
     class DoLogsController < Api::V1::ApplicationController
 
       def index
-        @do_logs = DoLog.all.order(id: "DESC")
+        @do_logs = DoLog.all.order(id:"ASC")
         render json: @do_logs
       end
 
@@ -14,7 +14,11 @@ module Api
 
       def destroy
         DoLog.find(params[:id]).destroy
-        head :deleted
+        if(true)
+          render json: {}, status: :ok
+        else
+          render json: {}, status: :unauthorized
+        end
       end
 
       def update

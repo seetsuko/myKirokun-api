@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-  # アソシエーション
+  # リレーション
   # has_many :do_lists
 end

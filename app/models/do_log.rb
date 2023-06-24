@@ -1,6 +1,6 @@
 class DoLog < ApplicationRecord
   # ulidのinclude
   include Identifiable
-  # アソシエーション
+  # リレーション
   # belong_to :do_list
 end

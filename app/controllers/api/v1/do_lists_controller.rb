@@ -8,13 +8,17 @@ module Api
       end
 
       def create
-        DoList.create(do_lists_params)
+        DoList.create(do_lists_params )
         head :created
       end
 
       def destroy
         DoList.find(params[:id]).destroy
-        head :deleted
+        if(true)
+          render json: {}, status: :ok
+        else
+          render json: {}, status: :unauthorized
+        end
       end
 
       def update
