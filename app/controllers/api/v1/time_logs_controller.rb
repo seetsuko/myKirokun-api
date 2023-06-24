@@ -1,19 +1,19 @@
 module Api
   module V1
-    class DoLogsController < Api::V1::ApplicationController
+    class TimeLogsController < Api::V1::ApplicationController
 
       def index
-        @do_logs = DoLog.all.order(id:"ASC")
-        render json: @do_logs
+        @time_logs = TimeLog.all.order(id:"ASC")
+        render json: @time_logs
       end
 
       def create
-        DoLog.create(do_logs_params)
+        TimeLog.create(time_logs_params)
         head :created
       end
 
       def destroy
-        DoLog.find(params[:id]).destroy
+        TimeLog.find(params[:id]).destroy
         if(true)
           render json: {}, status: :ok
         else
@@ -22,13 +22,13 @@ module Api
       end
 
       def update
-        DoLog.find(params[:id]).update(task_params)
-        render json: @do_logs
+        TimeLog.find(params[:id]).update(time_logs_params)
+        render json: @time_logs
       end
 
       private
       def do_logs_params
-        params.permit(:time, :id, :uid)
+        params.permit(:time)
       end
     end
   end
