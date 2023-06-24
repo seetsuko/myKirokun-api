@@ -3,7 +3,7 @@ module Api
     class DoListsController < Api::V1::ApplicationController
 
       def index
-        @do_lists = DoList.all
+        @do_lists = DoList.all.order(id: "DESC")
         render json: @do_lists
       end
 

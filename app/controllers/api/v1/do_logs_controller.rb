@@ -3,8 +3,8 @@ module Api
     class DoLogsController < Api::V1::ApplicationController
 
       def index
-        do_logs = DoLog.all
-        render json: do_logs
+        @do_logs = DoLog.all.order(id: "DESC")
+        render json: @do_logs
       end
 
       def create
@@ -19,7 +19,7 @@ module Api
 
       def update
         DoLog.find(params[:id]).update(task_params)
-        head :updated
+        render json: @do_logs
       end
 
       private
