@@ -8,8 +8,8 @@ module Api
       end
 
       def create
-        @do_list = DoList.create(do_lists_params )
-        render json: @do_lists
+        DoList.create(do_lists_params)
+        head :created
       end
 
       def destroy
@@ -25,7 +25,11 @@ module Api
       def update
         @do_list = DoList.find(params[:id])
         @do_list.update(do_lists_params)
-        render json: @do_lists
+        if(true)
+          render json: {}, status: :ok
+        else
+          render json: {}, status: :unauthorized
+        end
       end
 
       private

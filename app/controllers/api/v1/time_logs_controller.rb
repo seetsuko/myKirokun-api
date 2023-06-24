@@ -3,12 +3,14 @@ module Api
     class TimeLogsController < Api::V1::ApplicationController
 
       def index
-        @time_logs = TimeLog.all.order(id:"ASC")
+        @do_list = DoList.find(params[:do_list_id])
+        @time_logs = @do_list.time_logs.all.order(id:"ASC")
         render json: @time_logs
       end
 
       def create
-        TimeLog.create(time_logs_params)
+        @do_list = DoList.find(params[:do_list_id])
+        @do_list.time_logs.create(time_logs_params)
         head :created
       end
 
@@ -27,7 +29,7 @@ module Api
       end
 
       private
-      def do_logs_params
+      def time_logs_params
         params.permit(:time)
       end
     end
