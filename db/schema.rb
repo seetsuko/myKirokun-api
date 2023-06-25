@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_24_171123) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_25_173801) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,12 +28,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_171123) do
     t.string "do_list_id"
   end
 
-  create_table "users", primary_key: "uid", id: :string, default: "", force: :cascade do |t|
+  create_table "users", id: :string, default: "", force: :cascade do |t|
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
-    t.index ["uid"], name: "index_users_on_uid", unique: true
+    t.index ["id"], name: "index_users_on_id", unique: true
   end
 
 end

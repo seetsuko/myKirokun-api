@@ -14,7 +14,7 @@ module Api
           # ユーザーを作成する
           FirebaseIdToken::Certificates.request
           raise ArgumentError, 'BadRequest Parameter' if payload.blank?
-          @user = User.find_or_initialize_by(uid: payload['sub']) do |user|
+          @user = User.find_or_initialize_by(id: payload['sub']) do |user|
             user.email = payload['email']
           end
           if @user.save
