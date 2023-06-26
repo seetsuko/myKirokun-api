@@ -30,3 +30,5 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
+  url: postgres://nonnda_app_development_user:5UQl2UGzrt4PgaVMsVTdvks5efyrduJ2@dpg-ciaklsl9aq007t9imqcg-a/nonnda_app_development
+  host: dpg-ciaklsl9aq007t9imqcg-a
