@@ -3,7 +3,6 @@ module Api
   module V1
     module Auth
       class UsersController < V1::ApplicationController
-        skip_before_action :authenticate_user
         def index
           # ユーザー一覧を取り出す
           users = User.order(created_at: :desc)

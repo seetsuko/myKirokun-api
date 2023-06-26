@@ -3,7 +3,7 @@ module Api
     class DoListsController < Api::V1::ApplicationController
 
       def index
-        @user = User.find(params[:user_uid])
+        @user = User.find(params[:user_id])
         @do_lists = @user.do_lists.all.order(id:"DESC")
         render json: @do_lists
       end

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   # ヘッダーにtokenを入れる
   namespace 'api' do
     namespace 'v1' do
-      resources :users
       resources :users do
         resources :do_lists
       end
