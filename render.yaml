@@ -1,12 +1,12 @@
 databases:
   - name: myKirokun_DB
     databaseName: mykirokun_db
-    user: myKirokun_api
+    user: MyKirokun_API
     region: singapore
 
 services:
   - type: web
-    name: myKirokun_api
+    name: MyKirokun_API
     env: ruby
     region: singapore
     plan: free
