@@ -5,9 +5,14 @@ databases:
     region: singapore
 
 services:
-  - type: web
-    name: MyKirokun_API
-    env: ruby
+  - type: pserv
+    name: redis
+    env: docker
+    autoDeploy: false
+    disk:
+      name: data
+      mountPath: /var/lib/redis
+      sizeGB: 10
     region: singapore
     plan: free
     buildCommand: "./bin/render-build.sh"
@@ -19,3 +24,13 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+
+  services:
+    - type: pserv
+      name: redis
+      env: docker
+      autoDeploy: false
+      disk:
+        name: data
+        mountPath: /var/lib/redis
+        sizeGB: 10
