@@ -18,4 +18,21 @@ services:
           name: myKirokun_DB
           property: connectionString
       - key: RAILS_MASTER_KEY
+        fromService:
+          name: myKirokun_DB
+          type: redis
+          property: connectionString
         sync: false
+    autoDeploy: false
+
+    - type: redis
+    name: myKirokun_DB
+    region: singapore
+    plan: free
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList: []
+
+databases:
+  - name: myKirokun_DB
+    region: singapore
+    ipAllowList: []
