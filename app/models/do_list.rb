@@ -3,5 +3,5 @@ class DoList < ApplicationRecord
   include Identifiable
   # リレーション
   belongs_to :user
-  has_many :time_logs
+  has_many :time_logs, dependent: :destroy
 end
