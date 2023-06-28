@@ -1,7 +1,7 @@
 databases:
   - name: myKirokun_DB
     databaseName: mykirokun_db
-    user: MyKirokun_API
+    user: mykirokun_db_user
     region: singapore
 
 services:
