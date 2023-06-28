@@ -5,6 +5,12 @@ databases:
     region: singapore
 
 services:
+  - type: redis
+    name: cache
+    ipAllowList: [] # only allow internal connections
+    plan: free # optional (defaults to starter)
+    maxmemoryPolicy: allkeys-lfu
+
   - type: web
     name: MyKirokun_API
     env: ruby
@@ -18,21 +24,9 @@ services:
           name: myKirokun_DB
           property: connectionString
       - key: RAILS_MASTER_KEY
-        fromService:
-          name: myKirokun_DB
-          type: redis
-          property: connectionString
         sync: false
-    autoDeploy: false
-
-    - type: redis
-    name: myKirokun_DB
-    region: singapore
-    plan: free
-    maxmemoryPolicy: allkeys-lru
-    ipAllowList: []
-
-databases:
-  - name: myKirokun_DB
-    region: singapore
-    ipAllowList: []
+      - key: REDIS_URL # this must match the name of the environment variable used in production.rb
+        fromService:
+          type: redis
+          name: cache
+          property: connectionString
