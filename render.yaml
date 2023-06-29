@@ -5,11 +5,14 @@ databases:
     region: singapore
 
 services:
-  - type: redis
-    name: cache
-    ipAllowList: [] # only allow internal connections
-    plan: free # optional (defaults to starter)
-    maxmemoryPolicy: allkeys-lfu
+  - type: pserv
+    name: redis
+    env: docker
+    autoDeploy: false
+    disk:
+      name: data
+      mountPath: /var/lib/redis
+      sizeGB: 10
 
   - type: web
     name: MyKirokun_API
