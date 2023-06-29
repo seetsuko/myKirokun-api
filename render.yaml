@@ -1,35 +1,32 @@
 databases:
-  - name: myKirokun_DB
-    databaseName: mykirokun_db
-    user: mykirokun_db_user
-    region: singapore
+- name: myKirokun_DB
+  databaseName: mykirokun_db
+  user: mykirokun_db_user
+  region: singapore
 
 services:
-  - type: pserv
-    name: redis
-    env: docker
-    autoDeploy: false
-    disk:
-      name: data
-      mountPath: /var/lib/redis
-      sizeGB: 10
+- type: redis
+  name: cache
+  ipAllowList: []
+  plan: free
+  maxmemoryPolicy: allkeys-lfu
 
-  - type: web
-    name: MyKirokun_API
-    env: ruby
-    region: singapore
-    plan: free
-    buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
-    envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: myKirokun_DB
-          property: connectionString
-      - key: RAILS_MASTER_KEY
-        sync: false
-      - key: REDIS_URL # this must match the name of the environment variable used in production.rb
-        fromService:
-          type: redis
-          name: cache
-          property: connectionString
+- type: web
+  name: MyKirokun_API
+  env: ruby
+  region: singapore
+  plan: free
+  buildCommand: "./bin/render-build.sh"
+  startCommand: "bundle exec puma -C config/puma.rb"
+  envVars:
+  - key: DATABASE_URL
+    fromDatabase:
+      name: myKirokun_DB
+      property: connectionString
+  - key: RAILS_MASTER_KEY
+    sync: false
+  - key: REDIS_URL
+    fromService:
+      type: redis
+      name: cache
+      property: connectionString
